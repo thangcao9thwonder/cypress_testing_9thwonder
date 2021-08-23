@@ -1,6 +1,7 @@
-import { stubDataApi } from './data.json'
+import { stubDataApi, expectData } from './data.json'
 
 const { response1, response2, response3 } = stubDataApi
+const { request_search } = expectData
 const searchApiUrl = 'https://search.agilitycms.com/search'
 
 describe('Testing 9thWonder Website', () => {
@@ -78,5 +79,74 @@ describe('Testing 9thWonder Website', () => {
 
     // load xong kết quả => hide load
     cy.get('.loading-result').should('not.be.visible')
+  })
+
+  it('Test Searching with query in url and check formData', () => {
+    cy.server()
+    cy.visit('/search')
+
+    // case 1: Go search page and search with keyword Honda, check results
+    cy.get('.search-input').type('Honda')
+    cy.get('.search-input').type('{enter}')
+    cy.get('.result-containter .col-item-result').then($els => {
+      expect($els.length).to.equal(10)
+      const firstItemTitle = $els[0].querySelector('h5').innerText
+      const lastItemTitle = $els[$els.length - 1].querySelector('h5').innerText
+      cy.wrap(firstItemTitle).as('firstItemTitle')
+      cy.wrap(lastItemTitle).as('lastItemTitle')
+    })
+    
+    // case 2: Reload page, check result = result case 1
+    cy.reload()
+    cy.get('.result-containter .col-item-result').then($els => {
+      expect($els.length).to.equal(10)
+      const firstItemTitle = $els[0].querySelector('h5').innerText
+      const thirdItemTitle = $els[2].querySelector('h5').innerText
+      const lastItemTitle = $els[$els.length - 1].querySelector('h5').innerText
+      
+      // check item đầu có bắt đầu bằng Honda
+      const splitArr1 = firstItemTitle.split(' ')
+      expect(splitArr1[0]).to.equal('Honda')
+      
+      // check item cuối có kết thúc bằng Guide
+      const splitArr3 = thirdItemTitle.split(' ')
+      expect(splitArr3[splitArr3.length - 1]).to.equal('Guide')
+
+      // check kết quả đầu và cuối vẫn match với case1
+      cy.get('@firstItemTitle').then(case1FirstItemTitle => {
+        expect(case1FirstItemTitle).to.equal(firstItemTitle)
+      })
+      expect()
+      cy.get('@lastItemTitle').then(case1LastItemTitle => {
+        expect(case1LastItemTitle).to.equal(lastItemTitle)
+      })
+    })
+
+    // case 3: search with keyword Honda 1, check formData
+    cy.server()
+    cy.route({
+      method: 'POST',
+      url: searchApiUrl
+    }).as('stubbedSearchApi')
+    cy.get('.search-input').clear()
+    cy.get('.search-input').type('Honda 1')
+    cy.get('.search-input').type('{enter}')
+    cy.wait('@stubbedSearchApi').then(res => {
+      console.log('res', res)
+      expect(res).to.have.property('status')
+      expect(res).to.have.property('request')
+      expect(res).to.have.property('response')
+      expect(res.status).to.eq(200)
+
+      const { request } = res
+      expect(request).to.have.property('headers').that.is.an('object')
+      expect(request).to.have.property('body').that.is.a('string')
+      const { headers, body } = request
+      for (const key in request_search.headers) {
+        expect(headers).to.have.property(key)
+        expect(headers[key]).to.equal(request_search.headers[key])
+      }
+      expect(body).to.equal(request_search.body)
+    })
   })
 })
