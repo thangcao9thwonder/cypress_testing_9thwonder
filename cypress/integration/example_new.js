@@ -27,20 +27,31 @@ describe('Testing 9thWonder Website 1', () => {
     cy.get('.search-input').type('Honda{enter}')
 
     // cần đợi fetch xong data rồi mới có result element
-    cy.wait('@stubbedSearchApi').then(() => {
-      cy.window().then(win => {
-        const containers = win.$('.result-containter')
-        const container = containers[0]
-        const $els = container.querySelectorAll('.col-item-result h5')
-  
-        expect($els.length).to.equal(10)
-        const firstItemTitle = $els[0].innerText
-        const lastItemTitle = $els[$els.length - 1].innerText
+    cy.wait('@stubbedSearchApi')
+      .then(() => {
+        cy.window().then(win => {
+          const containers = win.$('.result-containter')
+          const container = containers[0]
+          const $els = container.querySelectorAll('.col-item-result h5')
+    
+          const countLastResult = $els.length
+          expect(countLastResult).to.equal(10)
+
+          const firstItemTitle = $els[0].innerText
+          const lastItemTitle = $els[$els.length - 1].innerText
+          return {
+            href: win.location.href,
+            firstItemTitle,
+            lastItemTitle,
+            countLastResult
+          }
+        })
+      })
+      .then(({ firstItemTitle, lastItemTitle, countLastResult }) => {
         cy.wrap(firstItemTitle).as('firstItemTitle')
         cy.wrap(lastItemTitle).as('lastItemTitle')
-        cy.wrap($els.length).as('countLastResult')
+        cy.wrap(countLastResult).as('countLastResult')
       })
-    })
 
     // case 2: Reload page, check result = result case 1
     cy.reload()
