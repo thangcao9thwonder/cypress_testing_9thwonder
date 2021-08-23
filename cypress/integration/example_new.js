@@ -44,6 +44,7 @@ describe('Testing 9thWonder Website 1', () => {
 
     // case 2: Reload page, check result = result case 1
     cy.reload()
+    // reload không cần đợi fetch api
     cy.window().then(win => {
       const containers=  win.$('.result-containter')
       const container = containers[0]
