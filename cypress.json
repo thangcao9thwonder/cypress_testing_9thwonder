@@ -1,3 +1,4 @@
 {
-  "baseUrl": "https://www.9thwonder.com"
+  "baseUrl": "https://www.9thwonder.com",
+  "testFiles": "**/*.js"
 }

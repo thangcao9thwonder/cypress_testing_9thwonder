@@ -1,3 +1,8 @@
+import { stubDataApi } from './data.json'
+
+const { response1, response2, response3 } = stubDataApi
+const searchApiUrl = 'https://search.agilitycms.com/search'
+
 describe('Testing 9thWonder Website', () => {
   // beforeEach(() => {})
   // it('Should visit homepage', () => {
@@ -21,53 +26,8 @@ describe('Testing 9thWonder Website', () => {
     // stub result 3 items
     cy.route({
       method: 'POST',
-      url: 'https://search.agilitycms.com/search',
-      response: {
-        "IsError": false,
-        "ErrorMessage": null,
-        "ResponseData": {
-          "Count": 3,
-          "Query": "Honda*",
-          "FromNumber": 1,
-          "ToNumber": 3,
-          "Results": [
-            {
-              "Title": "Stubbed response 1",
-              "Description": "",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/work/honda-talon",
-              "Score": 1.1338934,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 2",
-              "Description": "Humans have trouble distinguishing between an insight and an observation (or fact). Run through the following filters to make your insights fit the bill.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/9thwonder%20assets/ideas_marketinginsights_1356x658.jpg",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/blog/making-insights-insightful",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 3",
-              "Description": "Learn how to optimize your Hispanic marketing strategy for direct-to-collective online behavior with our 2020 guide to Hispanic Digital Purchasing Behavior.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/DtoC_20200528184811_0.jpg",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/guide-to-hispanic-digital-purchasing-behavior",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            }
-          ]
-        },
-        "Token": null,
-        "AdditionalValues": {},
-        "IsManagementException": false,
-        "StackTrace": null
-      }
+      url: searchApiUrl,
+      response: response1,
     }).as('stubbedSearchApi')
     cy.get('.menu-search-btn').click()
     cy.get('#search-menu').type('Honda')
@@ -82,113 +42,8 @@ describe('Testing 9thWonder Website', () => {
     // stub result 9 items
     cy.route({
       method: 'POST',
-      url: 'https://search.agilitycms.com/search',
-      response: {
-        "IsError": false,
-        "ErrorMessage": null,
-        "ResponseData": {
-          "Count": 9,
-          "Query": "Honda*",
-          "FromNumber": 1,
-          "ToNumber": 9,
-          "Results": [
-            {
-              "Title": "Stubbed response 1",
-              "Description": "",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/work/honda-talon",
-              "Score": 1.1338934,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 2",
-              "Description": "Humans have trouble distinguishing between an insight and an observation (or fact). Run through the following filters to make your insights fit the bill.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/9thwonder%20assets/ideas_marketinginsights_1356x658.jpg",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/blog/making-insights-insightful",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 3",
-              "Description": "Learn how to optimize your Hispanic marketing strategy for direct-to-collective online behavior with our 2020 guide to Hispanic Digital Purchasing Behavior.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/DtoC_20200528184811_0.jpg",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/guide-to-hispanic-digital-purchasing-behavior",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 4",
-              "Description": "We partner with our customers to create some of the best marketing work across industries. Check out our work and imagine what we could accomplish for your brand.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/work",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 5",
-              "Description": "Doug Greiff is President of 9thWonder StoryLab. Doug is in charge of a collective of diverse storytellers and pop culture engineers who craft branded entertainment strategies.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/about/leadership/doug-greiff",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 6",
-              "Description": "9thWonder is a global independent marketing agency with offices each purposely created to specialize in a few things. Use some of us or all of us.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/about",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 7",
-              "Description": "",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/DtoC_20200528184811_0.jpg",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/building-latinx-brand-advocates",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 8",
-              "Description": "",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/about/leadership/marcus-wesson",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 9",
-              "Description": "9thWonder is a full service, independent marketing agency. Our specialties range from research and brand strategy to digital marketing, media and creative services.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            }
-          ]
-        },
-        "Token": null,
-        "AdditionalValues": {},
-        "IsManagementException": false,
-        "StackTrace": null
-      }
+      url: searchApiUrl,
+      response: response2
     }).as('stubbedSearchApi')
     cy.get('.menu-search-btn').click()
     cy.get('#search-menu').type('Honda')
@@ -202,73 +57,8 @@ describe('Testing 9thWonder Website', () => {
     // stub result 5 items
     cy.route({
       method: 'POST',
-      url: 'https://search.agilitycms.com/search',
-      response: {
-        "IsError": false,
-        "ErrorMessage": null,
-        "ResponseData": {
-          "Count": 5,
-          "Query": "Honda*",
-          "FromNumber": 1,
-          "ToNumber": 5,
-          "Results": [
-            {
-              "Title": "Stubbed response 1",
-              "Description": "",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/work/honda-talon",
-              "Score": 1.1338934,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 2",
-              "Description": "Humans have trouble distinguishing between an insight and an observation (or fact). Run through the following filters to make your insights fit the bill.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/9thwonder%20assets/ideas_marketinginsights_1356x658.jpg",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/blog/making-insights-insightful",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 3",
-              "Description": "Learn how to optimize your Hispanic marketing strategy for direct-to-collective online behavior with our 2020 guide to Hispanic Digital Purchasing Behavior.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/DtoC_20200528184811_0.jpg",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/guide-to-hispanic-digital-purchasing-behavior",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 4",
-              "Description": "We partner with our customers to create some of the best marketing work across industries. Check out our work and imagine what we could accomplish for your brand.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/work",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            },
-            {
-              "Title": "Stubbed response 5",
-              "Description": "Doug Greiff is President of 9thWonder StoryLab. Doug is in charge of a collective of diverse storytellers and pop culture engineers who craft branded entertainment strategies.",
-              "Highlight": null,
-              "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
-              "Category": "",
-              "Url": "https://www.9thwonder.com/about/leadership/doug-greiff",
-              "Score": 0.37796447,
-              "LanguageCode": null
-            }
-          ]
-        },
-        "Token": null,
-        "AdditionalValues": {},
-        "IsManagementException": false,
-        "StackTrace": null
-      },
+      url: searchApiUrl,
+      response: response3,
       delay: 5000
     }).as('stubbedSearchApi')
 
