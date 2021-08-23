@@ -47,7 +47,8 @@ describe('Testing 9thWonder Website 1', () => {
           }
         })
       })
-      .then(({ firstItemTitle, lastItemTitle, countLastResult }) => {
+      .then(({ href, firstItemTitle, lastItemTitle, countLastResult }) => {
+        console.log('href', href)
         cy.wrap(firstItemTitle).as('firstItemTitle')
         cy.wrap(lastItemTitle).as('lastItemTitle')
         cy.wrap(countLastResult).as('countLastResult')
