@@ -35,7 +35,6 @@ describe('Testing 9thWonder Website 1', () => {
           const $els = container.querySelectorAll('.col-item-result h5')
     
           const countLastResult = $els.length
-          expect(countLastResult).to.equal(10)
 
           const firstItemTitle = $els[0].innerText
           const lastItemTitle = $els[$els.length - 1].innerText
@@ -49,6 +48,7 @@ describe('Testing 9thWonder Website 1', () => {
       })
       .then(({ href, firstItemTitle, lastItemTitle, countLastResult }) => {
         console.log('href', href)
+        expect(countLastResult).to.equal(10)
         cy.wrap(firstItemTitle).as('firstItemTitle')
         cy.wrap(lastItemTitle).as('lastItemTitle')
         cy.wrap(countLastResult).as('countLastResult')
