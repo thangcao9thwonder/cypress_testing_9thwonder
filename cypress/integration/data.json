@@ -1,4 +1,5 @@
 {
+  "searchApiUrl": "https://search.agilitycms.com/search",
   "stubDataApi": {
     "response1": {
       "IsError": false,
@@ -217,16 +218,145 @@
       "AdditionalValues": {},
       "IsManagementException": false,
       "StackTrace": null
+    },
+    "response_search": {
+      "IsError": false,
+      "ErrorMessage": null,
+      "ResponseData": {
+        "Count": 10,
+        "Query": "Honda*",
+        "FromNumber": 1,
+        "ToNumber": 10,
+        "Results": [
+          {
+            "Title": "Honda Talon",
+            "Description": "",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/work/honda-talon",
+            "Score": 1.1338934,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Making Insights Insightful",
+            "Description": "Humans have trouble distinguishing between an insight and an observation (or fact). Run through the following filters to make your insights fit the bill.",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/9thwonder%20assets/ideas_marketinginsights_1356x658.jpg",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/blog/making-insights-insightful",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Hispanic Digital Purchasing Behavior Guide",
+            "Description": "Learn how to optimize your Hispanic marketing strategy for direct-to-collective online behavior with our 2020 guide to Hispanic Digital Purchasing Behavior.",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/DtoC_20200528184811_0.jpg",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/guide-to-hispanic-digital-purchasing-behavior",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Independent Marketing Agency Case Studies",
+            "Description": "We partner with our customers to create some of the best marketing work across industries. Check out our work and imagine what we could accomplish for your brand.",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/work",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Doug Greiff, President & 9thWonder StoryLab",
+            "Description": "Doug Greiff is President of 9thWonder StoryLab. Doug is in charge of a collective of diverse storytellers and pop culture engineers who craft branded entertainment strategies.",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/about/leadership/doug-greiff",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Global Independent Marketing Agency",
+            "Description": "9thWonder is a global independent marketing agency with offices each purposely created to specialize in a few things. Use some of us or all of us.",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/about",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Building Latinx Brand Advocates",
+            "Description": "",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/DtoC_20200528184811_0.jpg",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/building-latinx-brand-advocates",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Marcus Wesson",
+            "Description": "",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/about/leadership/marcus-wesson",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "9thWonder | An Independent Marketing Agency",
+            "Description": "9thWonder is a full service, independent marketing agency. Our specialties range from research and brand strategy to digital marketing, media and creative services.",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          },
+          {
+            "Title": "Minh Le",
+            "Description": "",
+            "Highlight": null,
+            "ImageUrl": "https://cdn.agilitycms.com/9th-wonder/Attachments/NewItems/9thwonder-logo_20210426043109_0.png",
+            "Category": "",
+            "Url": "https://www.9thwonder.com/about/leadership/minh-le",
+            "Score": 0.37796447,
+            "LanguageCode": null
+          }
+        ]
+      },
+      "Token": null,
+      "AdditionalValues": {},
+      "IsManagementException": false,
+      "StackTrace": null
     }
   },
   "expectData": {
     "request_search": {
       "body": "query=Honda+1*&top=12&domain=www.9thwonder.com&languageCode=",
       "headers": {
-        "Accept": "application/json, text/javascript, */*; q=0.01",
-        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "as-AuthKey": "jKbaMg8z4Etrcrco94Mm9OvkGXlWe-TYaPZNRfAwX-U",
-        "as-WebsiteName": "9th Wonder"
+        "host": "search.agilitycms.com",
+        "connection": "keep-alive",
+        "content-length": "60",
+        "sec-ch-ua": "\"Chromium\";v=\"92\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"92\"",
+        "accept": "application/json, text/javascript, */*; q=0.01",
+        "as-websitename": "9th Wonder",
+        "as-authkey": "jKbaMg8z4Etrcrco94Mm9OvkGXlWe-TYaPZNRfAwX-U",
+        "sec-ch-ua-mobile": "?0",
+        "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36 Edg/92.0.902.78",
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "origin": "https://www.9thwonder.com",
+        "sec-fetch-site": "cross-site",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-dest": "empty",
+        "referer": "https://www.9thwonder.com/search?q=Honda",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "en-US,en;q=0.9"
       }
     }
   }
