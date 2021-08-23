@@ -1,0 +1,27 @@
+{
+  "name": "cypress_testing_9thwonder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thangcao9thwonder/cypress_testing_9thwonder.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thangcao9thwonder/cypress_testing_9thwonder/issues"
+  },
+  "homepage": "https://github.com/thangcao9thwonder/cypress_testing_9thwonder#readme",
+  "dependencies": {
+    "faker": "^5.5.3"
+  },
+  "devDependencies": {
+    "cypress": "^8.3.0"
+  }
+}
