@@ -14,7 +14,7 @@ describe('Testing 9thWonder Website 1', () => {
       // === 3 là reload lại page => alias searchApi
       // > 3 là nhập Honda 1 và enter để search => alias newSearchApi
       if (count < 3) {
-        req.response = response_search // => mock response
+        req.reply(response_search) // => mock response
         req.alias = 'stubbedSearchApi'
       } else if (count > 3) {
         req.alias = 'newSearchApi'
